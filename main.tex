@@ -1,0 +1,275 @@
+\documentclass[11pt]{article}
+
+\usepackage{hyperref}
+\usepackage{xeCJK} % 新增关键包
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{tabularx}
+
+% 配置 xeCJK 中文换行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+% 设置中文字体
+\setCJKmainfont{NotoSerifSC}[
+Path=fonts/,
+Extension=.otf,
+BoldFont=*-Bold
+]
+
+\usepackage{material-symbols}
+\hypersetup{hidelinks}
+
+% 其他设置
+\setlength{\parindent}{0pt}
+\pagenumbering{gobble}
+\setlist[itemize]{nosep, before={\vspace*{-\parskip}}, leftmargin=*, label={$\triangleright$}}
+\setlist[itemize,2]{label={$\bullet$}}
+\setlist[enumerate]{leftmargin=*}
+\renewcommand{\arraystretch}{1.2}
+\linespread{1.2}
+
+\titleformat{\section}
+{\LARGE\bfseries\raggedright}
+{}{0em}
+{}
+[{\color{secondary_color}\titlerule}]
+\titlespacing*{\section}{0cm}{*1.2}{*1.2}
+
+\usepackage[
+a4paper,
+left=1.2cm,
+right=1.2cm,
+top=1.5cm,
+bottom=1cm,
+nohead
+]{geometry}
+
+\definecolor{primary_color}{RGB}{43, 69, 140}%东北大学颜色
+\definecolor{secondary_color}{RGB}{255, 200, 0}%线的颜色，可改
+
+\newlength{\iconwidth}
+\setlength{\iconwidth}{1.5em}
+
+%%%%%%%%%%%%%%%%%%%%
+% 文章内容
+%%%%%%%%%%%%%%%%%%%%
+
+% 学院
+\newcommand{\school}{xx学院 | School of xx} 
+
+% 联系方式
+\newcommand{\contact}{
+	\footnotesize
+	\textcolor{white}{
+		% 邮箱
+		\href{mailto:0000000000@qq.com}{{\normalsize\mSymbol{mail}}\quad 0000000000@qq.com}
+		\hspace{4em}
+		% 手机号
+		\href{tel:000-0000-0000}{{\normalsize\mSymbol{call}}\quad 000-0000-0000}
+		% 别的联系方式，如微信、GitHub等
+		\hspace{4em}
+		\href{https://github.com/Kwille-arch/NEU-CV}{{\normalsize\mSymbol{package-2}}\quad GitHub 项目地址}
+	}
+}
+
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%%
+	% 页眉、页脚和背景（如果有多页简历，请把页眉页脚和背景复制粘贴到第二页的内容之前）
+	%%%%%%%%%%%%%%%%%%%%
+	
+	% 页眉：校标组合+学院名
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north, inner sep=0pt](header) at (current page.north){
+			\includegraphics[width=\paperwidth]{images/header-blue.png}
+		};
+		\node[anchor=west](school_logo) at (header.west){
+			\hspace{0.5cm}
+			\includegraphics[width=0.2\textwidth]{images/定版2-s转曲4.png}
+		};
+		\node[anchor=east](school_name) at(header.east){
+			\textcolor{white}{\textbf{\school}}
+			\hspace{0.5cm}
+		};
+	\end{tikzpicture}
+	
+	% 插入右上角照片
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north east, inner sep=20pt] at ([xshift=-0.5cm,yshift=-0.84cm]current page.north east) { % 坐标偏移
+			\includegraphics[width=0.135\linewidth]{images/picture.jpg}
+		};
+	\end{tikzpicture}
+	
+	\vspace{-5.5em}
+	
+	% 页脚，联系方式
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=south, inner sep=0pt](footer) at (current page.south){
+			\includegraphics[width=\paperwidth]{images/footer-blue.png}
+		};
+		% 联系方式
+		\node[anchor=center] at(footer.center){\contact};
+	\end{tikzpicture}
+	
+	% 背景
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[opacity=0.05] at(current page.center){
+			\includegraphics[width=0.7\paperwidth, keepaspectratio]{images/定版1-s转曲2.png}
+		};
+	\end{tikzpicture}
+	
+	%%%%%%%%%%%%%%%%%%%%
+	% 简历正文
+	%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{minipage}[t]{0.78\textwidth}
+		% 个人信息
+		\begin{minipage}[t]{\textwidth}
+			\section[个人信息]{\makebox[\iconwidth][c]{\color{primary_color}{\Large \mSymbol{badge}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 个人信息}}
+			\begin{minipage}[t]{0.5\textwidth}
+				\textbf{姓\qquad 名}：橙子禾安
+				
+				\vspace{0em}
+				\textbf{出生年月}：1145.14
+			\end{minipage}
+			\begin{minipage}[t]{0.35\textwidth}
+				\textbf{性\qquad 别}：男
+				
+				\vspace{0em}
+				\textbf{政治面貌}：共青团员
+			\end{minipage}
+			\vspace{1.2em}
+		\end{minipage}
+		
+	\end{minipage}
+	\hfill
+	\vspace{-1.3em}
+	% 教育背景
+	\begin{minipage}[t]{\textwidth}
+		\section[教育背景]{\makebox[\iconwidth][c]{\color{primary_color}{\Large\mSymbol{school}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 教育背景}}
+		
+		{\textbf{东北大学（985、211）\hfill 自动化\hfill 本科\hfill}2022年9月--2026年6月}
+		
+		\begin{itemize}
+			\item \textbf{学业成绩}：绩点：1.0 / 5.0\qquad 绩点排名：100/100(100\%)\qquad 综合排名：1/100(1\%)
+			\item\textbf{核心课程}：自动控制原理(61)、现代控制理论基础(62)等
+			\item \textbf{英语水平}：CET-4：425、CET-6：425
+			\item \textbf{荣誉奖项}：校级三等奖学金、校级三好学生
+		\end{itemize}
+	\end{minipage}
+	
+	% 科研经历
+	\begin{minipage}[t]{\textwidth}
+		\section[科研经历]{\makebox[\iconwidth][c]{\color{primary_color}{\Large\mSymbol{contract-edit}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 科研经历}}
+		
+		\begin{tabularx}{\linewidth}{ 
+				@{}
+				>{\raggedright}p{10.3cm}
+				>{\raggedright}X
+				>{\raggedleft}p{4.6cm}
+				@{}
+			}
+			\textbf{基于...的项目} & 负责人 & 2024年4月--2024年11月 \\
+		\end{tabularx}
+		
+		\vspace{-0.5cm}
+		\begin{itemize}
+			\item \textbf{项目背景}：
+			\item \textbf{个人工作}：
+			\begin{itemize}
+				\item 使用Simulink搭建xx仿真。
+				\item 设计xx算法
+				\item 
+				\item
+			\end{itemize}
+			\item \textbf{项目成果}：获得国家级一等奖，发表...论文
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		
+		\begin{tabularx}{\linewidth}{ 
+				@{}
+				>{\raggedright}p{10.3cm}
+				>{\raggedright}X
+				>{\raggedleft}p{4.6cm}
+				@{}
+			}
+			\textbf{一种...装置} & 负责人 & 2024年4月--2024年11月 \\
+		\end{tabularx}
+		
+		\vspace{-0.5cm}
+		\begin{itemize}
+			\item \textbf{项目背景}：
+			\item \textbf{个人工作}：
+			\begin{itemize}
+				\item
+				\item 
+				\item 
+				\item
+			\end{itemize}
+			\item \textbf{项目成果}：实现xxx
+		\end{itemize}
+		
+	\end{minipage}
+	% 竞赛获奖
+	\begin{minipage}[t]{\textwidth}
+		\section[竞赛获奖]{\makebox[\iconwidth][c]{\color{primary_color}{\Large\mSymbol{emoji-events}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 竞赛获奖}}
+		
+		\begin{tabularx}{\linewidth}{ 
+				@{}
+				>{\raggedright}p{10.5cm}
+				>{\raggedright}X
+				>{\raggedleft}p{3cm}
+				@{}
+			}
+			智能汽车竞赛\\
+			人工智能大赛\\
+			xx大赛\\
+			xx大赛\\
+			xx大赛
+			&
+			\textbf{国家级一等奖}\\
+			\textbf{国家级二等奖}\\
+			\textbf{国家级三等奖}\\
+			\quad 省级一等奖\\
+			\quad 省级二等奖
+			& 2023年8月\\
+			2023年9月\\
+			2023年10月\\
+			2023年11月\\
+			2023年12月
+		\end{tabularx}
+		
+	\end{minipage}
+	
+	% 技能特长
+	\begin{minipage}[t]{0.6\textwidth}
+		\section[技能特长]{\makebox[\iconwidth][c]{\color{primary_color}{\Large\mSymbol{handyman}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 技能特长}}
+		\begin{itemize}
+			\item Matlab、Python、C、汇编（可以写具体板块）
+			\item LaTe排版
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	% 兴趣爱好
+	\begin{minipage}[t]{0.35\textwidth}
+		\section[兴趣爱好]{\makebox[\iconwidth][c]{\color{primary_color}{\Large\mSymbol{star}}}\hspace{0.2em}{\fontsize{14}{16}\selectfont 兴趣爱好}}
+		\begin{itemize}
+			%	\setlength{\itemsep}{0.5em}
+			\item 唱
+			\item 跳
+			\item rap
+			\item 篮球。music!
+		\end{itemize}
+	\end{minipage}
+	
+	% \newpage
+	% 如有需要，可以添加额外的页面。不要忘记添加页眉页脚和背景相关的代码。
+\end{document}

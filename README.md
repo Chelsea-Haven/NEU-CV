@@ -1,22 +1,18 @@
-# SEU-CV：东南大学 LaTeX 中文简历模板
+# NEU-CV：东北大学 LaTeX 中文简历模板
 
-![](./docs/CV-preview.webp)
+![](./docs/CV-preview.png)
 
 ## 简介
 
 本模板基于：
 
-- [WHU 中文 CV 模板](https://www.overleaf.com/latex/templates/whuwu-han-da-xue-zhong-wen-jian-li-mo-ban/dbkvxrqjmzpd)
-- [NPU 中文 CV 模板](https://www.overleaf.com/latex/templates/npu-cv/mncqzxhvfzrx)
+- [SEU 中文 CV 模板](https://www.overleaf.com/latex/templates/seu-cv-dong-nan-da-xue-latex-zhong-wen-jian-li-mo-ban/jyzpthvnbmpm)
 
-在原有内容的基础上进行了修改：
-
-- 更改了照片和个人信息栏位的相对位置，可以插入更大的照片
-- 使用了风格更统一、样式更丰富的 [Material Symbols](https://fonts.google.com/icons) 作为图标字体
-- 更改了部分段落的格式；使用 `itemize` 整理每个项目的说明
-- 更改了校徽图标（参考 [SEU-Logo](https://github.com/seumxc/SEU-Logo)）
-- 调整了装饰图案的色彩风格
-- 更改了字体（`NotoSerifSC`，已内置在项目文件夹中）
+修改内容如下：
+- 解决了中文无法换行的问题
+- 证件照修改为全局位置调整，使用更加灵活
+- 更改了行间距、字体等，可以书写更多内容
+- 调整了图案、颜色、风格等
 
 ## 使用方法
 
